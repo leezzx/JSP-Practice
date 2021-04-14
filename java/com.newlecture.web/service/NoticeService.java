@@ -11,26 +11,67 @@ import java.util.Date;
 import java.util.List;
 
 import com.newlecture.web.entity.Notice;
+import com.newlecture.web.entity.NoticeView;
 
 public class NoticeService {
 	
-	public List<Notice> getNoticeList() {
+	public int removeNotice(int[] ids) {
+		
+		return 0;
+		
+	}
+	
+	public int pubNoticeAll(int[] ids) {
+		
+		return 0;
+		
+	}
+	
+	public int insertNotice(Notice notice) {
+		
+		return 0;
+		
+	}
+	
+	public int deleteNotice(int id) {
+		
+		return 0;
+		
+	}
+	
+	public int updateNotice(Notice notice) {
+		
+		return 0;
+		
+	}
+	
+	List<Notice> getNoticeNewestListt() {
+		
+		return null;
+		
+	}
+	
+	public List<NoticeView> getNoticeList() {
+		
 		return getNoticeList("title", "", 1);
+		
 	}
 	
-	public List<Notice> getNoticeList(int page) {
+	public List<NoticeView> getNoticeList(int page) {
+		
 		return getNoticeList("title", "", page);
+		
 	}
 	
-	public List<Notice> getNoticeList(String field /* TITLE, WRITER_ID */, String query /* A */, int page) {
+	public List<NoticeView> getNoticeList(String field /* TITLE, WRITER_ID */, String query /* A */, int page) {
 		
-		// DBÎ•º Í∞ÄÏ†∏Ïò§Í∏∞ ÏúÑÌï¥ JDBC ÌôúÏö©, WEB-INFÏùò libÏóê ojdbc8.jarÏùÑ ÎØ∏Î¶¨ Î≥µÏÇ¨Ìï¥ ÎëêÏñ¥Ïïº Ìï®
+		// DB∏¶ ∞°¡Æø¿±‚ ¿ß«ÿ JDBC »∞øÎ, WEB-INF¿« libø° ojdbc8.jar¿ª πÃ∏Æ ∫πªÁ«ÿ µŒæÓæﬂ «‘
 		
-		List<Notice> list = new ArrayList<>();
+		List<NoticeView> list = new ArrayList<>();
 		
 		String sql = "SELECT * FROM (" +
 				"	 SELECT ROWNUM NUM, N.* " +
-				"	 FROM (SELECT * FROM NOTICE WHERE " + field + " LIKE ? ORDER BY REGDATE DESC) N" +
+				"	 FROM (SELECT * FROM NOTICE_VIEW WHERE " + field + " LIKE ? ORDER BY REGDATE DESC) N" +
 				") " +
 				"WHERE NUM BETWEEN ? AND ?";
 		
@@ -41,30 +82,32 @@ public class NoticeService {
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, "newlec", "272452"); // Îπ®Í∞ÑÏ§ÑÏùÄ Ctrl+spaceÎ•º ÌÜµÌï¥ import
+			Connection con = DriverManager.getConnection(url, "newlec", "272452"); // ª°∞£¡Ÿ¿∫ Ctrl+space∏¶ ≈Î«ÿ import
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, "%" + query + "%");
 			st.setInt(2, 1 + (page - 1) * 10);
 			st.setInt(3, page * 10);
 			ResultSet rs = st.executeQuery();
 			
-			while(rs.next()) { // DBÏôÄ Ïó∞ÎèôÌïú Îç∞Ïù¥ÌÑ∞ Í∞ÄÏ†∏Ïò§Í∏∞
+			while(rs.next()) { // DBøÕ ø¨µø«— µ•¿Ã≈Õ ∞°¡Æø¿±‚
 				int id = rs.getInt("ID");
 				String title = rs.getString("TITLE");
 				Date regdate = rs.getDate("REGDATE");
 				String writerId = rs.getString("WRITER_ID");
 				String hit = rs.getString("HIT");
 				String files = rs.getString("FILES");
-				String content = rs.getString("CONTENT");
+				// String content = rs.getString("CONTENT"); «ÿ¥Á ø¿∂Û≈¨ ∫‰ø°¥¬ content æ¯¿Ω
+				int cmtCount = rs.getInt("CMT_COUNT");
 				
-				Notice notice = new Notice(
+				NoticeView notice = new NoticeView( // NoticeView∂Û¥¬ entityø°º≠ ∞°¡Æø¿±‚
 						id,
 						title,
 						regdate,
 						writerId,
 						hit,
 						files,
-						content
+						// content
+						cmtCount
 					);
 				list.add(notice);
 			}
@@ -85,7 +128,9 @@ public class NoticeService {
 	}
 	
 	public int getNoticeCount() {
+		
 		return getNoticeCount("title", "");
+		
 	}
 	
 	public int getNoticeCount(String field, String query) {
@@ -106,7 +151,9 @@ public class NoticeService {
 			st.setString(1, "%" + query + "%");
 			ResultSet rs = st.executeQuery();
 			
-			count = rs.getInt("COUNT");
+			if(rs.next()) {
+				count = rs.getInt("COUNT");
+			}
 			
 		    rs.close();
 			st.close();
