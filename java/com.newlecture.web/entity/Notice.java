@@ -12,11 +12,11 @@ public class Notice {
 	private String files;
 	private String content;
 	
-	public Notice() { // ctrl+space·Î ±âº»»ı¼ºÀÚ »ı¼º
+	public Notice() { // ctrl+spaceë¡œ ê¸°ë³¸ìƒì„±ì ìƒì„±
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Notice(int id, String title, Date regdate, String writerId, String hit, String files, String content) { // ¿ìÅ¬¸¯ -> source -> generate constructor using fields·Î ¿À¹ö·Îµå »ı¼ºÀÚ »ı¼º
+	public Notice(int id, String title, Date regdate, String writerId, String hit, String files, String content) { // ìš°í´ë¦­ -> source -> generate constructor using fieldsë¡œ ì˜¤ë²„ë¡œë“œ ìƒì„±ì ìƒì„±
 		
 		this.id = id;
 		this.title = title;
@@ -27,7 +27,7 @@ public class Notice {
 		this.content = content;
 	}
 
-	public int getId() { // ¿ìÅ¬¸¯ -> source -> generate getters and setters·Î »ı¼º
+	public int getId() { // ìš°í´ë¦­ -> source -> generate getters and settersë¡œ ìƒì„±
 		return id;
 	}
 
@@ -84,7 +84,7 @@ public class Notice {
 	}
 
 	@Override
-	public String toString() { // ¿ìÅ¬¸¯ -> source -> to stringÀ¸·Î ¿À¹ö¶óÀÌµå Ãâ·ÂÄÚµå
+	public String toString() { // ìš°í´ë¦­ -> source -> to stringìœ¼ë¡œ ì˜¤ë²„ë¼ì´ë“œ ì¶œë ¥ì½”ë“œ
 		return "Notice [id=" + id + ", title=" + title + ", regdate=" + regdate + ", writerId=" + writerId + ", hit="
 				+ hit + ", files=" + files + ", content=" + content + "]";
 	}
