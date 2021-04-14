@@ -23,7 +23,7 @@ public class NoticeListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// DB¸¦ °¡Á®¿À±â À§ÇØ JDBC È°¿ë, WEB-INFÀÇ lib¿¡ ojdbc8.jarÀ» ¹Ì¸® º¹»çÇØ µÎ¾î¾ß ÇÔ
+		// DBë¥¼ ê°€ì ¸ì˜¤ê¸° ìœ„í•´ JDBC í™œìš©, WEB-INFì˜ libì— ojdbc8.jarì„ ë¯¸ë¦¬ ë³µì‚¬í•´ ë‘ì–´ì•¼ í•¨
 		
 		List<Notice> list = new ArrayList<>();
 		
@@ -32,11 +32,11 @@ public class NoticeListController extends HttpServlet{
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, "newlec", "272452"); // »¡°£ÁÙÀº Ctrl+space¸¦ ÅëÇØ import
+			Connection con = DriverManager.getConnection(url, "newlec", "272452"); // ë¹¨ê°„ì¤„ì€ Ctrl+spaceë¥¼ í†µí•´ import
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 			
-			while(rs.next()) { // DB¿Í ¿¬µ¿ÇÑ µ¥ÀÌÅÍ °¡Á®¿À±â
+			while(rs.next()) { // DBì™€ ì—°ë™í•œ ë°ì´í„° ê°€ì ¸ì˜¤ê¸°
 				int id = rs.getInt("ID");
 				String title = rs.getString("TITLE");
 				Date regdate = rs.getDate("REGDATE");
