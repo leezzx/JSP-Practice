@@ -24,7 +24,7 @@ public class NoticeService {
 	
 	public List<Notice> getNoticeList(String field /* TITLE, WRITER_ID */, String query /* A */, int page) {
 		
-		// DB¸¦ °¡Á®¿À±â À§ÇØ JDBC È°¿ë, WEB-INFÀÇ lib¿¡ ojdbc8.jarÀ» ¹Ì¸® º¹»çÇØ µÎ¾î¾ß ÇÔ
+		// DBë¥¼ ê°€ì ¸ì˜¤ê¸° ìœ„í•´ JDBC í™œìš©, WEB-INFì˜ libì— ojdbc8.jarì„ ë¯¸ë¦¬ ë³µì‚¬í•´ ë‘ì–´ì•¼ í•¨
 		
 		List<Notice> list = new ArrayList<>();
 		
@@ -41,14 +41,14 @@ public class NoticeService {
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, "newlec", "272452"); // »¡°£ÁÙÀº Ctrl+space¸¦ ÅëÇØ import
+			Connection con = DriverManager.getConnection(url, "newlec", "272452"); // ë¹¨ê°„ì¤„ì€ Ctrl+spaceë¥¼ í†µí•´ import
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, "%" + query + "%");
 			st.setInt(2, 1 + (page - 1) * 10);
 			st.setInt(3, page * 10);
 			ResultSet rs = st.executeQuery();
 			
-			while(rs.next()) { // DB¿Í ¿¬µ¿ÇÑ µ¥ÀÌÅÍ °¡Á®¿À±â
+			while(rs.next()) { // DBì™€ ì—°ë™í•œ ë°ì´í„° ê°€ì ¸ì˜¤ê¸°
 				int id = rs.getInt("ID");
 				String title = rs.getString("TITLE");
 				Date regdate = rs.getDate("REGDATE");
