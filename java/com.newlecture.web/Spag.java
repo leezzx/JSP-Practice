@@ -17,7 +17,7 @@ public class Spag extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int num = 0; // MVC model 2 ¹æ½Ä, Controller¿Í view¼­ºí¸´ ºĞ¸®
+		int num = 0; // MVC model 2 ë°©ì‹, Controllerì™€ viewì„œë¸”ë¦¿ ë¶„ë¦¬
 		String num_ = request.getParameter("n");
 		if(num_ != null && !num_.equals("")) {
 			num = Integer.parseInt(num_);
@@ -26,22 +26,22 @@ public class Spag extends HttpServlet {
 		String result;
 		
 		if(num % 2 != 0) {
-			result = "È¦¼ö";
+			result = "í™€ìˆ˜";
 		} else {
-			result = "Â¦¼ö";
+			result = "ì§ìˆ˜";
 		}
 		
-		request.setAttribute("result", result); // request¿¡ result°ªÀ» ´ãÀ½
+		request.setAttribute("result", result); // requestì— resultê°’ì„ ë‹´ìŒ
 		
-		String[] names = {"mewlec", "dragon"}; // ELÈ°¿ë Å×½ºÆ®¸¦ À§ÇÑ ¸®½ºÆ® »ı¼º
+		String[] names = {"mewlec", "dragon"}; // ELí™œìš© í…ŒìŠ¤íŠ¸ë¥¼ ìœ„í•œ ë¦¬ìŠ¤íŠ¸ ìƒì„±
 		request.setAttribute("names", names);
 		
-		Map<String, Object> notice = new HashMap<String, Object>(); // ELÈ°¿ë Å×½ºÆ®
+		Map<String, Object> notice = new HashMap<String, Object>(); // ELí™œìš© í…ŒìŠ¤íŠ¸
 		notice.put("id", 1);
-		notice.put("title", "ELÀº ÁÁ¾Æ¿ä");
+		notice.put("title", "ELì€ ì¢‹ì•„ìš”");
 		request.setAttribute("notice", notice);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("spag.jsp"); // forward ÇÏ±â À§ÇÑ ±¸¹®
+		RequestDispatcher dispatcher = request.getRequestDispatcher("spag.jsp"); // forward í•˜ê¸° ìœ„í•œ êµ¬ë¬¸
 		dispatcher.forward(request, response);
 		
 	}
