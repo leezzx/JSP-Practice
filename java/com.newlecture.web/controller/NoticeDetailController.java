@@ -52,9 +52,9 @@ public class NoticeDetailController extends HttpServlet{
 								content
 							);
 					
-			request.setAttribute("n", notice); // °´Ã¼È­
+			request.setAttribute("n", notice); // ê°ì²´í™”
 			
-			/* µ¥ÀÌÅÍ Çü½ÄÀÇ °ªµé -> °´Ã¼È­ ÇÊ¿ä
+			/* ë°ì´í„° í˜•ì‹ì˜ ê°’ë“¤ -> ê°ì²´í™” í•„ìš”
 			request.setAttribute("title", title);
 			request.setAttribute("regdate", regdate);
 			request.setAttribute("writerId", writerId);
