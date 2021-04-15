@@ -31,16 +31,16 @@ public class ListController extends HttpServlet{
 		String cmd = request.getParameter("cmd");
 		
 		switch(cmd) {
-		case "ÀÏ°ı°ø°³":
+		case "ì¼ê´„ê³µê°œ":
 			for(String openId : openIds) {
 				System.out.printf("open id : %s\n", openId);
 			}
 			break;
-		case "ÀÏ°ı»èÁ¦":
+		case "ì¼ê´„ì‚­ì œ":
 			NoticeService service = new NoticeService();
 			int[] ids = new int[delIds.length];
 			
-			for(int i = 0; i < delIds.length; i++) { // delIds ¸®½ºÆ®¸¦ Á¤¼öÇüÀ¸·Î º¯È¯
+			for(int i = 0; i < delIds.length; i++) { // delIds ë¦¬ìŠ¤íŠ¸ë¥¼ ì •ìˆ˜í˜•ìœ¼ë¡œ ë³€í™˜
 				ids[i] = Integer.parseInt(delIds[i]);
 			}
 			
@@ -48,14 +48,14 @@ public class ListController extends HttpServlet{
 			break;
 		}
 		
-		response.sendRedirect("list"); // Áö¿ì°Å³ª ¼öÁ¤À» ÇÑ ÈÄ ¾Æ·¡ÀÇ doGet¿äÃ»À» ´Ù½ÃÇÔ
+		response.sendRedirect("list"); // ì§€ìš°ê±°ë‚˜ ìˆ˜ì •ì„ í•œ í›„ ì•„ë˜ì˜ doGetìš”ì²­ì„ ë‹¤ì‹œí•¨
 		
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//list?f=title&q=a ¶ó°í ¹ŞÀ½
+		//list?f=title&q=a ë¼ê³  ë°›ìŒ
 		String field_ = request.getParameter("f");
 		String query_ = request.getParameter("q");
 		String page_ = request.getParameter("p");
