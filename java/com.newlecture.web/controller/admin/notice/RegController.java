@@ -14,11 +14,11 @@ import javax.servlet.http.Part;
 import com.newlecture.web.entity.Notice;
 import com.newlecture.web.service.NoticeService;
 
-@MultipartConfig( // ÆÄÀÏ ¾÷·Îµå¸¦ À§ÇÏ ¼­ºí¸´ ¾î³ëÅ×ÀÌ¼Ç
-		// location="/tmp", // Àü¼ÛÇÑ µ¥ÀÌÅÍ°¡ 1¸Ş°¡¹ÙÀÌÆ®¸¦ ³ÑÀ» °æ¿ì µğ½ºÅ©¸¦ ¾¸
-		fileSizeThreshold=1024*1024, // Àü¼ÛÇÑ µ¥ÀÌÅÍ°¡ 1¸Ş°¡¹ÙÀÌÆ®
-		maxFileSize=1024*1024*50, // ÆÄÀÏ ÇÏ³ªÀÇ ÃÖ´ë Å©±â 50¸Ş°¡¹ÙÀÌÆ®
-		maxRequestSize=1024*1024*50*5 // ÀüÃ¼ ¿äÃ»¿¡¼­´Â 250¸Ş°¡¹ÙÀÌÆ®¸¦ ÃÊ°úÇÒ ¼ö ¾ø´Ù.
+@MultipartConfig( // íŒŒì¼ ì—…ë¡œë“œë¥¼ ìœ„í•˜ ì„œë¸”ë¦¿ ì–´ë…¸í…Œì´ì…˜
+		// location="/tmp", // ì „ì†¡í•œ ë°ì´í„°ê°€ 1ë©”ê°€ë°”ì´íŠ¸ë¥¼ ë„˜ì„ ê²½ìš° ë””ìŠ¤í¬ë¥¼ ì”€
+		fileSizeThreshold=1024*1024, // ì „ì†¡í•œ ë°ì´í„°ê°€ 1ë©”ê°€ë°”ì´íŠ¸
+		maxFileSize=1024*1024*50, // íŒŒì¼ í•˜ë‚˜ì˜ ìµœëŒ€ í¬ê¸° 50ë©”ê°€ë°”ì´íŠ¸
+		maxRequestSize=1024*1024*50*5 // ì „ì²´ ìš”ì²­ì—ì„œëŠ” 250ë©”ê°€ë°”ì´íŠ¸ë¥¼ ì´ˆê³¼í•  ìˆ˜ ì—†ë‹¤.
 )
 @WebServlet("/admin/board/notice/reg")
 public class RegController extends HttpServlet {
@@ -40,7 +40,7 @@ public class RegController extends HttpServlet {
 		Part filePart = request.getPart("file");
 		filePart.getInputStream();
 		
-		String realPath = request.getServletContext().getRealPath("/upload"); // ÆÄÀÏ ÀúÀåÀ» À§ÇÑ ¹°¸®°æ·Î¸¦ ¾Ë¾Æ³»±â
+		String realPath = request.getServletContext().getRealPath("/upload"); // íŒŒì¼ ì €ì¥ì„ ìœ„í•œ ë¬¼ë¦¬ê²½ë¡œë¥¼ ì•Œì•„ë‚´ê¸°
 		
 		boolean pub = false;
 		if(isOpen != null) {
