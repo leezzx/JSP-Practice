@@ -1,4 +1,4 @@
-package com.newlecture.web.entity; // class ¸¸µé½Ã superclass¿¡ Notice¸¦ Àû¾î¼­ ¿¬°á
+package com.newlecture.web.entity; // class ë§Œë“¤ì‹œ superclassì— Noticeë¥¼ ì ì–´ì„œ ì—°ê²°
 
 import java.util.Date;
 
@@ -21,7 +21,7 @@ public class NoticeView extends Notice {
 	}
 	
 	public NoticeView(int id, String title, Date regdate, String writerId, String hit, String files, int cmtCount) {
-		super(id, title, regdate, writerId, hit, files, ""); // super¸¦ ÅëÇØ Notice entity¿¡¼­ ºÒ·¯¿È
+		super(id, title, regdate, writerId, hit, files, ""); // superë¥¼ í†µí•´ Notice entityì—ì„œ ë¶ˆëŸ¬ì˜´
 		this.cmtCount = cmtCount;
 	}
 
